@@ -18,7 +18,7 @@ A polished, interactive wall calendar built with React + Vite.
 ##  How to Run Locally
 
 1. Clone the repository
-   git clone https://github.com/sam-2603/wall-calendar.git
+   git clone https://github.com/sam-2603/wall-calendar
 
 2. Go into the project folder
    cd wall-calendar
@@ -32,19 +32,7 @@ A polished, interactive wall calendar built with React + Vite.
 5. Open browser at
    http://localhost:5173
 
-##  Project Structure
-src/
-├── components/
-│   ├── CalendarGrid.jsx    # Date grid with range selection
-│   ├── CalendarHeader.jsx  # Month/year navigation
-│   ├── HeroImage.jsx       # Hero image with overlay
-│   └── NotesPanel.jsx      # Notes with localStorage
-├── hooks/
-│   └── useCalendar.js      # All calendar logic
-├── data/
-│   └── monthImages.js      # Month images and colors
-├── App.jsx
-└── App.css
+
 
 ##  Design Choices
 - Separated all logic into custom hook (useCalendar.js)

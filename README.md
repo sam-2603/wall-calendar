@@ -32,6 +32,9 @@ A polished, interactive wall calendar built with React + Vite.
 5. Open browser at
    http://localhost:5173
 
+##  Live Demo
+https://wall-calendar-ruddy.vercel.app
+
 
 
 ##  Design Choices

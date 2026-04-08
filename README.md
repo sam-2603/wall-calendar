@@ -1,16 +1,53 @@
-# React + Vite
+#  Wall Calendar — Interactive React Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A polished, interactive wall calendar built with React + Vite.
 
-Currently, two official plugins are available:
+##  Features
+- Wall calendar aesthetic with hero image per month
+- Day range selector (click start date, click end date)
+- Integrated notes section (saved to localStorage)
+- Fully responsive (desktop & mobile)
+- Month-specific images and accent colors
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Tech Stack
+- React 18
+- Vite
+- CSS3 (no UI libraries)
+- localStorage for data persistence
 
-## React Compiler
+##  How to Run Locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Clone the repository
+   git clone https://github.com/sam-2603/wall-calendar.git
 
-## Expanding the ESLint configuration
+2. Go into the project folder
+   cd wall-calendar
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Install dependencies
+   npm install
+
+4. Start the development server
+   npm run dev
+
+5. Open browser at
+   http://localhost:5173
+
+##  Project Structure
+src/
+├── components/
+│   ├── CalendarGrid.jsx    # Date grid with range selection
+│   ├── CalendarHeader.jsx  # Month/year navigation
+│   ├── HeroImage.jsx       # Hero image with overlay
+│   └── NotesPanel.jsx      # Notes with localStorage
+├── hooks/
+│   └── useCalendar.js      # All calendar logic
+├── data/
+│   └── monthImages.js      # Month images and colors
+├── App.jsx
+└── App.css
+
+##  Design Choices
+- Separated all logic into custom hook (useCalendar.js)
+- Each UI section is its own component
+- No external UI libraries — pure CSS
+- localStorage used for notes persistence

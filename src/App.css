@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #ffffff;
+  --off-white: #f5f3ef;
+  --gray-100: #f0ede8;
+  --gray-200: #e0dbd2;
+  --gray-400: #9e9589;
+  --gray-700: #3d3630;
+  --shadow: 0 24px 80px rgba(0,0,0,0.22);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--off-white);
+  min-height: 100vh;
+}
+
+
+.app-bg {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(180,160,140,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(140,160,180,0.13) 0%, transparent 55%),
+    #eae7e0;
+}
+
+
+.calendar-card {
+  width: 100%;
+  max-width: 960px;
+  background: var(--white);
+  border-radius: 4px 4px 8px 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.binding-strip {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 24px;
+  transition: background 0.5s;
+}
+.ring {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: 3px solid rgba(255,255,255,0.55);
+  position: relative;
+}
+.ring::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 8px;
+  border-radius: 0 0 8px 8px;
+  border: 3px solid rgba(255,255,255,0.4);
+  border-top: none;
+}
+
+/*Card body*/
+.card-body {
+  display: flex;
+  flex-direction: row;
+  height: 680px;        
+}
+
+/* Hero image  */
+.hero-image-wrapper {
+  position: relative;
+  width: 42%;
+  min-width: 280px;
+  height: 100%;         
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.hero-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: zoomIn 8s ease-in-out infinite alternate;
+}
+@keyframes zoomIn {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  transition: background 0.5s;
+}
+.hero-label {
+  position: absolute;
+  bottom: 32px;
+  right: 24px;
+  text-align: right;
+}
+.hero-year {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 6px;
+}
+.hero-month {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.binding-holes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4px 16px;
+}
+.hole {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.35);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+}
+
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px 20px;
+  background: var(--white);
+}
+
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.nav-btn:hover { background: var(--gray-100); }
+.cal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.4s;
+}
+
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  flex: 1;
+}
+.day-name {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--gray-400);
+  padding: 4px 0 8px;
+}
+.day-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--gray-700);
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+  user-select: none;
+  position: relative;
+}
+.day-cell:hover:not(.empty) {
+  background: var(--gray-100);
+  transform: scale(1.1);
+}
+.day-cell.empty {
+  cursor: default;
+  pointer-events: none;
+}
+.day-cell.today .day-num {
+  border: 2px solid var(--accent, #1a6db5);
+  border-radius: 50%;
+  padding: 2px 5px;
+}
+.day-cell.range-start,
+.day-cell.range-end {
+  background: var(--accent, #1a6db5) !important;
+  color: #fff !important;
+  border-radius: 50%;
+  font-weight: 600;
+  transform: scale(1.12);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+.day-cell.in-range {
+  background: color-mix(in srgb, var(--accent, #1a6db5) 14%, white);
+  border-radius: 0;
+}
+
+
+.notes-panel {
+  margin-top: 16px;
+  border-top: 1px solid var(--gray-200);
+  padding-top: 14px;
+}
+.notes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 3px solid;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  transition: border-color 0.4s;
+}
+.notes-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.notes-range {
+  font-size: 0.7rem;
+  color: var(--gray-400);
+}
+.notes-area {
+  width: 100%;
+  min-height: 72px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--gray-700);
+  background: transparent;
+  line-height: 1.9;
+  caret-color: var(--accent, #1a6db5);
+}
+.notes-area::placeholder { color: var(--gray-400); }
+.note-line {
+  height: 1px;
+  background: var(--gray-200);
+  margin: 8px 0;
+}
+
+@media (max-width: 680px) {
+  .card-body { flex-direction: column; }
+  .hero-image-wrapper {
+    width: 100%;
+    min-width: unset;
+    height: 220px;
+  }
+  .right-panel { padding: 16px; }
+  .hero-month { font-size: 1.8rem; }
+  .binding-strip { height: 28px; }
+  .ring { width: 14px; height: 14px; }
+}
+
+@media (max-width: 400px) {
+  .hero-image-wrapper { height: 180px; }
+  .cal-title { font-size: 1.1rem; }
+}
